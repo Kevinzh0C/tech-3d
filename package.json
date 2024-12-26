@@ -1,0 +1,31 @@
+{
+  "name": "github-3d-tech-stack-dist",
+  "version": "1.0.0",
+  "description": "3D Tech Stack Visualization built with Vite, React, React Three Fiber, and Drei",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest --watch",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+  },
+  "homepage": "https://<USERNAME>.github.io/github-3d-tech-stack-dist/",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@react-three/fiber": "^8.0.27",
+    "@react-three/drei": "^9.31.5"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0",
+    "@vitejs/plugin-react": "^3.0.0",
+    "vitest": "^0.34.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "cypress": "^12.0.0",
+    "vitest-canvas-mock": "^0.1.0"
+  }
+}
