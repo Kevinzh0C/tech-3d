@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom';
-import 'vitest-canvas-mock';
+// Removed vitest-canvas-mock import to fix dependency issues
