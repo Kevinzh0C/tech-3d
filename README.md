@@ -12,6 +12,14 @@
 - **Drei**: React Three Fiber的辅助库，提供预制组件和工具
 - **Vite**: 现代前端构建工具
 
+## 在线演示
+
+查看3D技术栈实时演示: [Tech Stack 3D Visualization](https://kevinzh0c.github.io/tech-3d/)
+
+<div align="center">
+  <a href="https://kevinzh0c.github.io/tech-3d/" target="_blank"><img src="https://img.shields.io/badge/▶-在线演示-brightgreen?style=for-the-badge" alt="Live Demo"></a>
+</div>
+
 ## 组件结构
 
 项目由以下主要组件构成：
