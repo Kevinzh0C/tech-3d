@@ -1,17 +1,30 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect, useCallback } from 'react';
 import TechStack3D from './components/TechStack3D';
+import Button from './components/Button';
 import './index.css';
+import './css/responsive.css';
+
+const CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 'language', label: 'Languages' },
+  { key: 'framework', label: 'Frameworks' },
+  { key: 'infrastructure', label: 'Infrastructure' },
+];
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
-    // 模拟加载过程
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
     
     return () => clearTimeout(timer);
+  }, []);
+
+  const handleCategoryChange = useCallback((key) => {
+    setActiveCategory(key);
   }, []);
 
   return (
@@ -30,9 +43,23 @@ const App = () => {
       
       <div className="canvas-container">
         <Suspense fallback={null}>
-          <TechStack3D />
+          <TechStack3D activeCategory={activeCategory} />
         </Suspense>
       </div>
+
+      {!loading && (
+        <div className="button-container">
+          {CATEGORIES.map((cat) => (
+            <Button
+              key={cat.key}
+              label={cat.label}
+              active={activeCategory === cat.key}
+              variant={cat.key !== 'all' ? cat.key : ''}
+              onClick={() => handleCategoryChange(cat.key)}
+            />
+          ))}
+        </div>
+      )}
       
       <footer className="footer">
         <p>使用 React Three Fiber 和 Drei 构建 | 拖动可旋转视图 | 悬停在技术上可查看详情</p>
