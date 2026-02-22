@@ -1,12 +1,13 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import TechStack3D from './components/TechStack3D';
+import ButtonGroup from './components/Button';
 import './index.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   useEffect(() => {
-    // 模拟加载过程
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -30,9 +31,11 @@ const App = () => {
       
       <div className="canvas-container">
         <Suspense fallback={null}>
-          <TechStack3D />
+          <TechStack3D activeFilter={activeFilter} />
         </Suspense>
       </div>
+
+      <ButtonGroup activeFilter={activeFilter} onFilterChange={setActiveFilter} />
       
       <footer className="footer">
         <p>使用 React Three Fiber 和 Drei 构建 | 拖动可旋转视图 | 悬停在技术上可查看详情</p>

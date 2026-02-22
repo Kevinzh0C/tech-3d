@@ -121,7 +121,7 @@ const ResponsiveLayout = ({ children }) => {
 };
 
 // 性能优化的技术栈组件
-const TechStackGroup = () => {
+const TechStackGroup = ({ activeFilter = 'all' }) => {
   const groupRef = useRef();
   const { viewport } = useThree();
   const GPUTier = useDetectGPU();
@@ -161,6 +161,12 @@ const TechStackGroup = () => {
     return [...languages, ...frameworks, ...infrastructure];
   }, [isSmallScreen]);
 
+  // Filter tech based on activeFilter
+  const filteredTech = useMemo(() => {
+    if (activeFilter === 'all') return allTech;
+    return allTech.filter((tech) => tech.category === activeFilter);
+  }, [allTech, activeFilter]);
+
   // 整体旋转动画
   useFrame((state) => {
     if (groupRef.current) {
@@ -172,7 +178,7 @@ const TechStackGroup = () => {
 
   return (
     <group ref={groupRef}>
-      {allTech.map((tech, index) => (
+      {filteredTech.map((tech, index) => (
         <Float 
           key={tech.name} 
           speed={isLowPerformance ? 1 : 1.5} 
@@ -223,7 +229,7 @@ const CameraController = () => {
   );
 };
 
-const TechStack3D = () => {
+const TechStack3D = ({ activeFilter = 'all' }) => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const GPUTier = useDetectGPU();
   const [isLowPerformance, setIsLowPerformance] = useState(false);
@@ -263,7 +269,7 @@ const TechStack3D = () => {
       {/* 响应式布局包装 */}
       <ResponsiveLayout>
         {/* 主要技术栈组 - 使用单独的组件以便优化 */}
-        <TechStackGroup />
+        <TechStackGroup activeFilter={activeFilter} />
       </ResponsiveLayout>
       
       {/* 相机控制 */}
