@@ -182,10 +182,26 @@ function App() {
 - 在低性能设备上，组件自动降级，减少几何体复杂度，简化材质和效果
 - 组件使用React Suspense进行懒加载，减少初始加载时间
 
+## Mobile Button Alignment Fix
+
+Added responsive category filter buttons with proper mobile alignment:
+
+### New Files
+- `src/components/Button.jsx` — Reusable button component with active/variant states and `aria-pressed` for accessibility.
+- `src/css/components/buttons.css` — Base button styles with Flexbox layout, WCAG-compliant 44×44 px touch targets, and mobile breakpoints at 768 px and 480 px.
+- `src/css/responsive.css` — Consolidated mobile media queries for header, footer, button container, and landscape orientation handling.
+
+### Key Changes
+- Buttons stack vertically and stretch to full width on screens < 768 px; they revert to a horizontal row in landscape mode.
+- `rem`-based sizing ensures layout integrity up to 200 % font scaling.
+- No floats — pure Flexbox.
+- Category filter buttons (All / Languages / Frameworks / Infrastructure) allow filtering the 3D tech badges in real time.
+- Desktop layout remains unchanged.
+
 ## 未来改进方向
 
 1. 添加技术徽章的详细信息面板
 2. 实现技术之间的关系连线
-3. 添加技术筛选和分类功能
+3. ~~添加技术筛选和分类功能~~ (implemented)
 4. 优化移动设备上的触摸交互
 5. 添加更多自定义选项和主题

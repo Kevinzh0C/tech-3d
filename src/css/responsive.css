@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Responsive Layout — Mobile-first overrides
+   Breakpoints: 768px (tablet), 480px (small mobile)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Tablet and Mobile — max-width 768px
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Header adjustments */
+  .header {
+    padding: 16px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* Ensure containers don't overflow */
+  .container {
+    overflow: hidden;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small Mobile — max-width 480px
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 8px;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+    padding: 0 0.25rem;
+  }
+
+  .footer {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+  }
+
+  .footer p {
+    line-height: 1.4;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility — Respect user font-size preferences
+   Handles font scaling up to 200% without layout breakage.
+   -------------------------------------------------------------------------- */
+@media (min-resolution: 1dppx) {
+  .button-container,
+  .header,
+  .footer {
+    max-width: 100vw;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Orientation — Landscape on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) and (orientation: landscape) {
+  .button-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: auto;
+    max-width: 90%;
+  }
+
+  .button {
+    width: auto;
+    flex: 0 1 auto;
+  }
+
+  .header h1 {
+    font-size: 1.25rem;
+  }
+
+  .header p {
+    display: none;
+  }
+}
