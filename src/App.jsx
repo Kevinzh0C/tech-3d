@@ -2,8 +2,16 @@ import React, { Suspense, useState, useEffect } from 'react';
 import TechStack3D from './components/TechStack3D';
 import './index.css';
 
+const CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 'language', label: 'Languages' },
+  { key: 'framework', label: 'Frameworks' },
+  { key: 'infrastructure', label: 'Infrastructure' },
+];
+
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
     // 模拟加载过程
@@ -30,12 +38,32 @@ const App = () => {
       
       <div className="canvas-container">
         <Suspense fallback={null}>
-          <TechStack3D />
+          <TechStack3D activeCategory={activeCategory} />
         </Suspense>
       </div>
-      
+
+      <div className="button-container">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.key}
+            type="button"
+            className={
+              'button-container__btn' +
+              (activeCategory === cat.key ? ' button-container__btn--active' : '')
+            }
+            onClick={() => setActiveCategory(cat.key)}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
       <footer className="footer">
-        <p>使用 React Three Fiber 和 Drei 构建 | 拖动可旋转视图 | 悬停在技术上可查看详情</p>
+        <div className="footer__hints">
+          <span className="footer__hint">Drag to rotate</span>
+          <span className="footer__hint">Hover for details</span>
+          <span className="footer__hint">Built with React Three Fiber</span>
+        </div>
       </footer>
     </div>
   );

@@ -135,6 +135,17 @@ if (hovered) {
 - **布局调整**：在小屏幕上减小徽章间距和高度差异
 - **触摸支持**：检测触摸设备并调整交互方式
 
+### 7. Mobile Button Alignment
+
+Category filter buttons and footer action hints are fully responsive:
+
+- **Desktop (>=768px)**: Buttons displayed in a horizontal row, centered with `12px` gap
+- **Mobile (<768px)**: Buttons stack vertically, centered, with `8px` gap and `16px` side padding
+- **Touch targets**: All buttons meet the WCAG 2.1 AA minimum of `44px` touch target size
+- **No overflow**: `max-width: 280px` prevents buttons from causing horizontal scroll
+- **BEM naming**: `.button-container`, `.button-container__btn`, `.button-container__btn--active`
+- **CSS-only**: Zero runtime overhead; layout recalculates instantly on resize/orientation change
+
 ## 使用方法
 
 1. 安装依赖：
