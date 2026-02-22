@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Responsive Breakpoints & Layout
+   Mobile-first responsive design for the 3D Tech Stack Visualization
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Mobile breakpoint: max-width 767px
+   Centers layout elements, adjusts typography and spacing for small screens
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 767px) {
+  .header {
+    padding: 12px 16px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    padding: 0 8px;
+  }
+
+  .footer {
+    padding: 8px 16px;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .loading {
+    font-size: 1.2rem;
+  }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small mobile breakpoint: max-width 480px
+   Further reduces sizing for very small devices
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 10px 16px;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .footer p {
+    font-size: 0.65rem;
+  }
+
+  .loading {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .loading-spinner {
+    width: 35px;
+    height: 35px;
+    margin-right: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Extra-small mobile breakpoint: max-width 320px
+   Minimum viable layout for smallest screens
+   -------------------------------------------------------------------------- */
+@media screen and (max-width: 320px) {
+  .header {
+    padding: 8px 12px;
+  }
+
+  .header h1 {
+    font-size: 1rem;
+  }
+
+  .header p {
+    font-size: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet breakpoint: 768px - 1024px
+   Intermediate layout adjustments
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header p {
+    font-size: 0.95rem;
+  }
+}
