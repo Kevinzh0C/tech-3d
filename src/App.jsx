@@ -1,6 +1,8 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import TechStack3D from './components/TechStack3D';
+import Button from './components/Button';
 import './index.css';
+import './css/main.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -26,6 +28,20 @@ const App = () => {
       <header className="header">
         <h1>技术栈3D展示</h1>
         <p>一个高级、专业的3D技术栈可视化组件，展示团队的核心技术能力</p>
+        <div className="button-group">
+          <Button
+            variant="primary"
+            href="https://kevinzh0c.github.io/tech-3d/"
+          >
+            在线演示
+          </Button>
+          <Button
+            variant="secondary"
+            href="https://github.com/Kevinzh0C/tech-3d"
+          >
+            查看源码
+          </Button>
+        </div>
       </header>
       
       <div className="canvas-container">

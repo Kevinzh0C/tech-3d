@@ -47,6 +47,10 @@ html, body, #root {
   margin: 0 auto;
 }
 
+.header .button-group {
+  margin-top: 16px;
+}
+
 .canvas-container {
   width: 100%;
   height: 100%;
@@ -106,27 +110,8 @@ html, body, #root {
   }
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-  .header h1 {
-    font-size: 1.5rem;
-  }
-  
-  .header p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header {
-    padding: 15px;
-  }
-  
-  .header h1 {
-    font-size: 1.2rem;
-  }
-  
-  .header p {
-    font-size: 0.8rem;
-  }
-}
+/* --------------------------------------------------------------------------
+   Responsive styles are now managed in src/css/responsive.css.
+   The mobile breakpoints below have been moved there for maintainability.
+   Import order: index.css (base) → css/main.css (components + responsive).
+   -------------------------------------------------------------------------- */

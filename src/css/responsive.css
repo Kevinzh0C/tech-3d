@@ -1,0 +1,195 @@
+/* ==========================================================================
+   Responsive Styles - Mobile Breakpoints
+   ==========================================================================
+   Mobile-first responsive overrides for button alignment and layout.
+   Breakpoints:
+     - max-width: 767px  → Mobile devices
+     - max-width: 480px  → Small mobile devices
+     - min-width: 768px  → Tablet and desktop (default)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Mobile Devices (max-width: 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Header adjustments */
+  .header {
+    padding: 16px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.85rem;
+    padding: 0 8px;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    padding: 12px 16px;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Loading screen: stack spinner + text vertically */
+  .loading {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .loading-spinner {
+    margin-right: 0;
+  }
+
+  .loading span {
+    font-size: 1.2rem;
+  }
+
+  /* Button group: stack buttons vertically, full width */
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  /* Buttons: full width on mobile with proper alignment */
+  .button-group .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Ensure tap targets meet 44px minimum */
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent horizontal overflow */
+  .container {
+    overflow-x: hidden;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Small Mobile Devices (max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .header {
+    padding: 12px 8px;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  .header p {
+    font-size: 0.75rem;
+    padding: 0 4px;
+  }
+
+  .footer {
+    padding: 10px 12px;
+  }
+
+  .footer p {
+    font-size: 0.65rem;
+  }
+
+  .loading span {
+    font-size: 1rem;
+  }
+
+  /* Buttons stretch full width on very small screens */
+  .button-group .btn {
+    max-width: 100%;
+  }
+
+  .btn {
+    padding: 12px 16px;
+    font-size: 0.8rem;
+  }
+
+  .btn-lg {
+    padding: 14px 24px;
+    font-size: 0.875rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Landscape / Rotation Handling
+   --------------------------------------------------------------------------
+   Prevent layout shift on orientation change.
+   ========================================================================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .header {
+    padding: 8px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .header p {
+    display: none; /* Hide subtitle in tight landscape */
+  }
+
+  .footer {
+    padding: 6px 12px;
+  }
+
+  .loading {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .loading-spinner {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Buttons go back to inline in landscape */
+  .button-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .button-group .btn {
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   High Zoom / Large Text Accessibility (200% zoom)
+   --------------------------------------------------------------------------
+   Uses relative units to prevent overflow.
+   ========================================================================== */
+@media (max-width: 767px) {
+  .btn {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Allow wrapping for translated/long text */
+  .btn-wrap {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
