@@ -121,7 +121,7 @@ const ResponsiveLayout = ({ children }) => {
 };
 
 // 性能优化的技术栈组件
-const TechStackGroup = () => {
+const TechStackGroup = ({ activeCategory = 'all' }) => {
   const groupRef = useRef();
   const { viewport } = useThree();
   const GPUTier = useDetectGPU();
@@ -158,8 +158,12 @@ const TechStackGroup = () => {
     const infrastructure = calculatePositions(techData.infrastructure, -2, 5, Math.PI / 8);
 
     // 合并所有技术
-    return [...languages, ...frameworks, ...infrastructure];
-  }, [isSmallScreen]);
+    const all = [...languages, ...frameworks, ...infrastructure];
+
+    // 按活跃类别过滤
+    if (activeCategory === 'all') return all;
+    return all.filter((tech) => tech.category === activeCategory);
+  }, [isSmallScreen, activeCategory]);
 
   // 整体旋转动画
   useFrame((state) => {
@@ -223,7 +227,7 @@ const CameraController = () => {
   );
 };
 
-const TechStack3D = () => {
+const TechStack3D = ({ activeCategory = 'all' }) => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const GPUTier = useDetectGPU();
   const [isLowPerformance, setIsLowPerformance] = useState(false);
@@ -263,7 +267,7 @@ const TechStack3D = () => {
       {/* 响应式布局包装 */}
       <ResponsiveLayout>
         {/* 主要技术栈组 - 使用单独的组件以便优化 */}
-        <TechStackGroup />
+        <TechStackGroup activeCategory={activeCategory} />
       </ResponsiveLayout>
       
       {/* 相机控制 */}
