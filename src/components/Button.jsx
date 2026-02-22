@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import '../css/components/buttons.css';
 
-const CATEGORIES = [
-  { key: 'all', label: 'All', count: 14 },
-  { key: 'language', label: 'Languages', count: 5 },
-  { key: 'framework', label: 'Frameworks', count: 4 },
-  { key: 'infrastructure', label: 'Infrastructure', count: 5 },
-];
+// Tech data counts derived from TechStack3D techData
+const TECH_COUNTS = {
+  language: 5,
+  framework: 4,
+  infrastructure: 5,
+};
+
+const buildCategories = (counts) => {
+  const total = Object.values(counts).reduce((sum, n) => sum + n, 0);
+  return [
+    { key: 'all', label: 'All', count: total },
+    { key: 'language', label: 'Languages', count: counts.language },
+    { key: 'framework', label: 'Frameworks', count: counts.framework },
+    { key: 'infrastructure', label: 'Infrastructure', count: counts.infrastructure },
+  ];
+};
 
 const FilterButton = ({ category, isActive, onClick }) => {
   return (
@@ -25,10 +35,12 @@ const FilterButton = ({ category, isActive, onClick }) => {
 };
 
 const ButtonGroup = ({ activeFilter, onFilterChange }) => {
+  const categories = useMemo(() => buildCategories(TECH_COUNTS), []);
+
   return (
     <div className="button-controls">
       <div className="button-container" role="toolbar" aria-label="Filter tech stack by category">
-        {CATEGORIES.map((cat) => (
+        {categories.map((cat) => (
           <FilterButton
             key={cat.key}
             category={cat}
@@ -41,5 +53,5 @@ const ButtonGroup = ({ activeFilter, onFilterChange }) => {
   );
 };
 
-export { CATEGORIES };
+export { TECH_COUNTS, buildCategories };
 export default ButtonGroup;

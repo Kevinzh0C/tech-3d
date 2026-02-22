@@ -45,14 +45,6 @@
   outline-offset: 2px;
 }
 
-.filter-btn:hover {
-  background: rgba(64, 128, 255, 0.2);
-  border-color: rgba(64, 128, 255, 0.7);
-  color: #ffffff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(64, 128, 255, 0.2);
-}
-
 .filter-btn:active {
   transform: translateY(0);
   box-shadow: none;

@@ -151,18 +151,9 @@
 
   .filter-btn {
     padding: 6px 12px;
-    min-height: 36px;
+    min-height: 44px;
     font-size: 0.75rem;
   }
 }
 
-/* ============================================
-   Smooth transitions for viewport resize
-   ============================================ */
-.header,
-.footer,
-.button-controls,
-.button-container,
-.filter-btn {
-  transition: all 0.3s ease;
-}
+/* Smooth transitions are handled per-component in buttons.css */
