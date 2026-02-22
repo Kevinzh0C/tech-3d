@@ -1,0 +1,12 @@
+/* ==========================================================================
+   Main CSS Entry Point
+   ==========================================================================
+   Imports all component and responsive styles.
+   Order matters: base → components → responsive (overrides).
+   ========================================================================== */
+
+/* Component styles */
+@import './components/buttons.css';
+
+/* Responsive breakpoint overrides (must load last) */
+@import './responsive.css';

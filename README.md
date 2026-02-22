@@ -135,6 +135,53 @@ if (hovered) {
 - **布局调整**：在小屏幕上减小徽章间距和高度差异
 - **触摸支持**：检测触摸设备并调整交互方式
 
+### 7. 移动端按钮对齐
+
+按钮组件和布局在移动端进行了专门优化：
+
+- **CSS架构**：样式拆分为 `src/css/components/buttons.css`（按钮组件）和 `src/css/responsive.css`（响应式断点），通过 `src/css/main.css` 统一导入
+- **移动端对齐**：在 `<768px` 视口下，按钮组自动切换为垂直堆叠布局（`flex-direction: column`），居中对齐
+- **触摸目标**：所有按钮最小尺寸为 44px，符合 WCAG 无障碍标准
+- **横屏适配**：横屏模式下按钮恢复水平排列，避免布局偏移
+- **长文本处理**：支持 `btn-wrap` 类名启用文本换行，防止溢出
+- **200% 缩放**：使用相对单位和 `max-width: 100%`，在高缩放下无水平溢出
+
+#### Button 组件使用
+
+```jsx
+import Button from './components/Button';
+
+<div className="button-group">
+  <Button variant="primary" href="https://example.com">主要按钮</Button>
+  <Button variant="secondary">次要按钮</Button>
+  <Button variant="ghost" size="sm">幽灵按钮</Button>
+</div>
+```
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'ghost'` | `'primary'` | 按钮视觉风格 |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | 按钮尺寸 |
+| `block` | `boolean` | `false` | 是否全宽 |
+| `wrap` | `boolean` | `false` | 是否允许文本换行 |
+| `icon` | `ReactNode` | - | 可选图标 |
+| `href` | `string` | - | 设置后渲染为 `<a>` 标签 |
+
+#### CSS 文件结构
+
+```
+src/
+├── css/
+│   ├── main.css                 # CSS 入口文件
+│   ├── components/
+│   │   └── buttons.css          # 按钮组件样式
+│   └── responsive.css           # 响应式断点覆盖
+├── index.css                    # 全局基础样式
+└── components/
+    └── Button.jsx               # 按钮 React 组件
+```
+
 ## 使用方法
 
 1. 安装依赖：
