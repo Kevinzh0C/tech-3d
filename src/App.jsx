@@ -1,12 +1,22 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import TechStack3D from './components/TechStack3D';
+import Button from './components/Button';
 import './index.css';
+import './css/components/buttons.css';
+import './css/responsive.css';
+
+const CATEGORIES = [
+  { key: 'all', label: 'All' },
+  { key: 'language', label: 'Languages' },
+  { key: 'framework', label: 'Frameworks' },
+  { key: 'infrastructure', label: 'Infrastructure' },
+];
 
 const App = () => {
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState('all');
 
   useEffect(() => {
-    // 模拟加载过程
     const timer = setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -27,6 +37,20 @@ const App = () => {
         <h1>技术栈3D展示</h1>
         <p>一个高级、专业的3D技术栈可视化组件，展示团队的核心技术能力</p>
       </header>
+
+      <div className="button-container" role="toolbar" aria-label="Filter tech stack by category">
+        {CATEGORIES.map((cat) => (
+          <Button
+            key={cat.key}
+            variant={activeCategory === cat.key ? 'primary' : 'secondary'}
+            active={activeCategory === cat.key}
+            onClick={() => setActiveCategory(cat.key)}
+            ariaLabel={`Filter by ${cat.label}`}
+          >
+            {cat.label}
+          </Button>
+        ))}
+      </div>
       
       <div className="canvas-container">
         <Suspense fallback={null}>
