@@ -135,6 +135,28 @@ if (hovered) {
 - **布局调整**：在小屏幕上减小徽章间距和高度差异
 - **触摸支持**：检测触摸设备并调整交互方式
 
+### 7. 移动端按钮对齐
+
+按钮在移动设备上自动调整布局以确保良好的用户体验：
+
+- **响应式按钮容器**：桌面端水平排列，移动端（<768px）垂直堆叠居中
+- **触摸目标合规**：最小 44px 触摸区域（符合无障碍标准）
+- **渐进增强**：使用 flexbox 布局，支持 `gap` 属性
+- **按钮组件**：可复用的 `Button` 和 `ButtonContainer` 组件
+
+```jsx
+import { Button, ButtonContainer } from './components/Button';
+
+<ButtonContainer>
+  <Button variant="primary" href="/link">Primary</Button>
+  <Button variant="secondary">Secondary</Button>
+</ButtonContainer>
+```
+
+相关样式文件：
+- `src/css/components/buttons.css` — 按钮基础样式和移动端适配
+- `src/css/layout/responsive.css` — 布局断点调整
+
 ## 使用方法
 
 1. 安装依赖：

@@ -1,6 +1,8 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import TechStack3D from './components/TechStack3D';
+import { Button, ButtonContainer } from './components/Button';
 import './index.css';
+import './css/layout/responsive.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -35,6 +37,24 @@ const App = () => {
       </div>
       
       <footer className="footer">
+        <ButtonContainer>
+          <Button
+            variant="primary"
+            href="https://github.com/Kevinzh0C/tech-3d"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </Button>
+          <Button
+            variant="secondary"
+            href="https://Kevinzh0C.github.io/tech-3d/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Live Demo
+          </Button>
+        </ButtonContainer>
         <p>使用 React Three Fiber 和 Drei 构建 | 拖动可旋转视图 | 悬停在技术上可查看详情</p>
       </footer>
     </div>
