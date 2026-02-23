@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Button Component Styles
+   Mobile-first button alignment and touch-target compliance
+   ========================================================================== */
+
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #80ffff;
+  outline-offset: 2px;
+}
+
+/* Button variants */
+.btn-primary {
+  background: linear-gradient(135deg, #4080ff, #6060ff);
+  box-shadow: 0 2px 8px rgba(64, 128, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5090ff, #7070ff);
+  box-shadow: 0 4px 12px rgba(64, 128, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  background: linear-gradient(135deg, #3070ee, #5050ee);
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(64, 128, 255, 0.3);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(0);
+}
+
+/* Button container - controls layout and alignment */
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Mobile Responsive Styles (< 768px)
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    min-height: 44px; /* Accessibility: minimum touch target */
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    /* Reset any desktop-only margins */
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ==========================================================================
+   Small Mobile (< 480px)
+   ========================================================================== */
+@media screen and (max-width: 479px) {
+  .button-container {
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .btn {
+    max-width: 100%;
+    padding: 14px 16px; /* Slightly taller for easier tapping */
+    font-size: 0.85rem;
+  }
+}
