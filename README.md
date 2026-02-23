@@ -182,10 +182,48 @@ function App() {
 - 在低性能设备上，组件自动降级，减少几何体复杂度，简化材质和效果
 - 组件使用React Suspense进行懒加载，减少初始加载时间
 
+## Button 组件与移动端适配
+
+### Button 组件
+
+项目包含一个可复用的 `Button` 组件（`src/components/Button.jsx`），用于技术栈分类筛选：
+
+```jsx
+import Button from './components/Button';
+
+<Button
+  label="编程语言"
+  category="language"
+  isActive={true}
+  onClick={() => handleFilter('language')}
+/>
+```
+
+**Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | string | — | 按钮显示文本 |
+| `isActive` | boolean | `false` | 是否为激活状态 |
+| `category` | string | `''` | 分类标识，用于样式变体 |
+| `onClick` | function | — | 点击回调 |
+
+### 移动端对齐
+
+按钮在移动端使用 Flexbox 布局实现自适应对齐：
+
+- **≥ 768px**：水平排列，居中对齐
+- **480px – 767px**：水平排列，自动换行
+- **< 480px**：垂直堆叠，全宽按钮
+- 所有断点均满足 **44px 最小触摸目标**（无障碍访问）
+
+相关样式文件：
+- `src/css/components/buttons.css` – 按钮样式与移动端对齐
+- `src/css/responsive.css` – 全局响应式断点
+
 ## 未来改进方向
 
 1. 添加技术徽章的详细信息面板
 2. 实现技术之间的关系连线
-3. 添加技术筛选和分类功能
+3. ~~添加技术筛选和分类功能~~ ✓ 已实现
 4. 优化移动设备上的触摸交互
 5. 添加更多自定义选项和主题
